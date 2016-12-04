@@ -3,10 +3,11 @@ class Student:
 	scg = 0.0
 	stro = 0.0
 	lpr = 0.0
-	peg = 0.0
+	# Attribute being predicted after conversion to letter score
+	peg = 0.0 
 	# Convert the user knowledge level from string to float 0-1
 	uns = 0 
-	# Exam performance of user for goal objects in letter grade
+	# Exam performance of user for goal objects in pass or fail
 	goalScore = "F"
 
 	def __init__(self):
@@ -37,15 +38,15 @@ class Student:
 
 		# Handle goal score
 		if self.peg < 0.66:
-			self.goalScore = "F"
-		elif self.peg < 0.7:
-			self.goalScore = "D"
-		elif self.peg < 0.8:
-			self.goalScore = "C"
-		elif self.peg < 0.9:
-			self.goalScore = "B"
+			self.goalScore = "Fail"
+		# elif self.peg < 0.7:
+		# 	self.goalScore = "D"
+		# elif self.peg < 0.8:
+		# 	self.goalScore = "C"
+		# elif self.peg < 0.9:
+		# 	self.goalScore = "B"
 		else:
-			self.goalScore = "A"
+			self.goalScore = "Pass"
 
 		return
 
