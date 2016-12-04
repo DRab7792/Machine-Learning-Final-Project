@@ -1,6 +1,7 @@
 from __future__ import print_function
 import csv
 import math
+import random
 from class_student import Student
 
 # Parse the data from one of the csv files
@@ -106,6 +107,16 @@ def calcStdDev(arr):
 	avg = calcMean(arr)
 	variance = sum([pow(x - avg, 2) for x in arr]) / float(len(arr) - 1)
 	return math.sqrt(variance)
+
+# Split data into test data and training data
+def splitData(arr, ratio):
+	trainSize = int(len(arr) * ratio)
+	trainSet = []
+	copy = list(arr)
+	while len(trainSet) < trainSize:
+		index = random.randrange(len(copy))
+		trainSet.append(copy.pop(index))
+	return trainSet, copy
 
 # Display statistics with labels
 def printStats(stats):

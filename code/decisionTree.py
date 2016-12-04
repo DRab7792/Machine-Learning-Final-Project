@@ -117,19 +117,28 @@ def testTree(arr, tree):
 
 
 def main():
+	list1 = parseData("training")
+	list2 = parseData("test")
+	data = list1 + list2
+	splitRatio = 0.67
+
+	# Split the data up
+	trainingData, testData = splitData(data, splitRatio)
+
 	# Parse training data and form tree
 	trainingData = parseData("training")
 	tree = buildTree(trainingData)
-	print ("Test Data Tree Formation")
-	print ("------------------------")
-	printTree(tree)
-	print ("\n\n")
 
 	# Parse test data and run it through the tree
 	testData = parseData("test")
 	(confustionMatrix, rocCurve) = testTree(testData, tree)
 	statistics = formStatistics(confustionMatrix, rocCurve)
 
+	# Print Results
+	print ("Test Data Tree Formation")
+	print ("------------------------")
+	printTree(tree)
+	print ("\n\n")
 	print ("Confusion matrix from test data")
 	print ("-------------------------------")
 	printStats(confustionMatrix)

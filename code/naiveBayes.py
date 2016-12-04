@@ -112,9 +112,13 @@ def printSummaries(summary):
 	return;
 
 def main():
-	trainingData = parseData("training")
+	list1 = parseData("training")
+	list2 = parseData("test")
+	data = list1 + list2
+	splitRatio = 0.67
+
+	trainingData, testData = splitData(data, splitRatio)
 	summary = summarizeByClass(trainingData)
-	testData = parseData("test")
 	(confusionMatrix, rocCurve) = predictStudents(summary, testData)
 	statistics = formStatistics(confusionMatrix, rocCurve)
 	
